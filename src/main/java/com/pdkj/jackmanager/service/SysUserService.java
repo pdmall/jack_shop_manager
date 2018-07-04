@@ -2,10 +2,13 @@ package com.pdkj.jackmanager.service;
 
 import com.pdkj.jackmanager.bean.SysUser;
 import com.pdkj.jackmanager.dao.SysUserDao;
+import com.pdkj.jackmanager.util.sql.Pager;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -21,7 +24,7 @@ public class SysUserService extends BaseService {
         return user;
     }
 
-    public List<SysUser> getSysUserList(Integer state) {
-        return sysUserDao.getSysUserList(state);
+    public List<Map<String,Object>> getSysUserList(Integer state, Pager page) {
+        return sysUserDao.getSysUserList(state,page);
     }
 }

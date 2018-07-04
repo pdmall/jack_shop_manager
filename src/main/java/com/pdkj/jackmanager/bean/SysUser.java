@@ -7,7 +7,7 @@ public class SysUser {
     private String password;
     private String name;
     private String phone;
-    private String sys_role_id;
+    private String role_id;
     private String token;
     private String created;
     private String updated;
@@ -61,12 +61,12 @@ public class SysUser {
         this.phone = phone;
     }
 
-    public String getSys_role_id() {
-        return sys_role_id;
+    public String getRole_id() {
+        return role_id;
     }
 
-    public void setSys_role_id(String sys_role_id) {
-        this.sys_role_id = sys_role_id;
+    public void setRole_id(String role_id) {
+        this.role_id = role_id;
     }
 
     public String getToken() {

@@ -24,7 +24,7 @@ public class SysUserService extends BaseService {
         return user;
     }
 
-    public List<Map<String,Object>> getSysUserList(Integer state, Pager page) {
-        return sysUserDao.getSysUserList(state,page);
+    public List<Map<String,Object>> getSysUserList(Integer state, Pager page, String key) {
+        return sysUserDao.getSysUserList(state,page,key);
     }
 }

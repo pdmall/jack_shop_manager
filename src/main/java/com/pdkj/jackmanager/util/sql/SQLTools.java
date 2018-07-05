@@ -66,6 +66,8 @@ public  class SQLTools {
             }
             sb.append("%");
             keyword = sb.toString();
+        }else{
+            keyword = "";
         }
         return keyword;
     }

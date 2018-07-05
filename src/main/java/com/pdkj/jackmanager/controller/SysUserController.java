@@ -25,8 +25,8 @@ public class SysUserController extends BaseController{
     }
 
     @GetMapping("getSysUserList")
-    public Result getSysUserList(Pager page, Integer state){
-        List<Map<String,Object>> users = sysUserService.getSysUserList(state,page);
+    public Result getSysUserList(Pager page, Integer state,String key){
+        List<Map<String,Object>> users = sysUserService.getSysUserList(state,page,key);
         return ResultGenerator.genSuccessResult(users);
     }
 

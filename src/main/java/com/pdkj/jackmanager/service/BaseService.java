@@ -1,6 +1,8 @@
 package com.pdkj.jackmanager.service;
 
+import com.pdkj.jackmanager.dao.ShopDao;
 import com.pdkj.jackmanager.dao.SysUserDao;
+import com.pdkj.jackmanager.dao.UserDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,12 @@ public class BaseService<T> {
 
     @Resource
     SysUserDao sysUserDao;
+
+    @Resource
+    ShopDao shopDao;
+
+    @Resource
+    UserDao userDao;
 
 
 

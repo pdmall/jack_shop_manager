@@ -40,7 +40,7 @@ public class ShopController extends BaseController {
     }
 
     @GetMapping("updateShop")
-    public Result updateShop(int id , int shop_state) throws CustomException {
+    public Result updateShop(Long id , int shop_state) throws CustomException {
         return ResultGenerator.genSuccessResult(shopService.updateShop(id,shop_state));
     }
     @GetMapping("getShop")

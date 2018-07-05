@@ -27,7 +27,7 @@ public class ShopService extends BaseService<ShopDao> {
         return shopDao.getShopByCheck(page);
     }
 
-    public int updateShop(int id , int shop_state){
+    public int updateShop(Long id , int shop_state){
         return shopDao.updateShop(id,shop_state);
     }
 

@@ -25,22 +25,22 @@ import java.util.Map;
 public class ShopDao extends BaseDao {
 
     public List<Map<String, Object>> getShopList(Pager page) {
-       String sql = "select * from no_pass_shop limit "+(page.getRow()-1)*page.getPage()+","+page.getPage();
+       String sql = "select * from is_pass_shop limit "+(page.getPage()-1)*page.getRow()+","+page.getRow();
         return jdbcTemplate.queryForList(sql);
     }
     public Map<String, Object> getShop(Long id) {
-        String sql = " SELECT * FROM no_pass_shop where id = ? ";
+        String sql = " SELECT * FROM is_pass_shop where id = ? ";
         Map<String, Object> map = jdbcTemplate.queryForMap(sql, id);
         return map;
     }
     public List<Map<String, Object>> getShopByCheck(Pager page) {
-        String sql = "select * from no_pass_shop where shop_state = -1 limit "+(page.getRow()-1)*page.getPage()+","+page.getPage();
+        String sql = "select * from is_pass_shop where shop_state = -1 limit "+(page.getPage()-1)*page.getRow()+","+page.getRow();
         List<Map<String, Object>> map = jdbcTemplate.queryForList(sql);
         return map;
     }
 
-    public int updateShop(int id , int shop_state){
-        String sql = "UPDATE `is_pass_shop`  SET `shop_state` = ?, WHERE `id` = ? ";
+    public int updateShop(Long id , int shop_state){
+        String sql = "UPDATE `is_pass_shop`  SET `shop_state` = ?  WHERE `id` = ? ";
         return jdbcTemplate.update(sql,shop_state,id);
     }
 }

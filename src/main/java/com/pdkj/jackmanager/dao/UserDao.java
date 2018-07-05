@@ -6,6 +6,7 @@ import com.pdkj.jackmanager.util.sql.SQLTools;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import com.pdkj.jackmanager.bean.User;
 import java.util.Map;
 
 @Repository
@@ -23,4 +24,14 @@ public class UserDao extends BaseDao {
         }
         return users;
     }
+    public Map<String, Object> getUser(Long id){
+        String sql ="Select id,`name` from user where id = ?";
+        return jdbcTemplate.queryForMap(sql,id);
+    }
+
+    public void update(User oldUser) {
+        String sql = "";
+        jdbcTemplate.update(sql);
+    }
+
 }

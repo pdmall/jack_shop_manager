@@ -1,6 +1,7 @@
 package com.pdkj.jackmanager.controller;
 
 import com.pdkj.jackmanager.bean.SysUser;
+import com.pdkj.jackmanager.service.BannerService;
 import com.pdkj.jackmanager.service.ShopService;
 import com.pdkj.jackmanager.service.SysUserService;
 import com.pdkj.jackmanager.service.UserService;
@@ -19,6 +20,10 @@ public class BaseController {
 
     @Resource
     UserService userService;
+
+
+    @Resource
+    public BannerService bannerService;
 
     public SysUser getUser(){
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();

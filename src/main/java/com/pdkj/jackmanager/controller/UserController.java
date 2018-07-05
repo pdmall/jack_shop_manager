@@ -3,7 +3,7 @@ package com.pdkj.jackmanager.controller;
 
 import com.pdkj.jackmanager.core.Result;
 import com.pdkj.jackmanager.core.ResultGenerator;
-import com.pdkj.jackmanager.dao.BaseDao;
+import com.pdkj.jackmanager.core.CustomException;
 import com.pdkj.jackmanager.util.sql.Pager;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +22,14 @@ public class UserController extends BaseController {
         return ResultGenerator.genSuccessResult(users);
     }
 
+    @GetMapping("getAllUser")
+    public Result getAllUser(Pager pager) throws CustomException {
+        return ResultGenerator.genSuccessResult();
+    }
+
+    @GetMapping("updateUser")
+    public Result updateUser(String token) throws CustomException {
+        return ResultGenerator.genSuccessResult();
+    }
 
 }

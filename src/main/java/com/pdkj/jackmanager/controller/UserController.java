@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("user")
-public class UserController {
+public class UserController extends BaseController {
     @GetMapping("getAllUser")
     public Result getAllUser(Pager pager) throws CustomException {
         return ResultGenerator.genSuccessResult();

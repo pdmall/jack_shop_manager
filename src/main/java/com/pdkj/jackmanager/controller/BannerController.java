@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("banner")
-public class BannerController {
+public class BannerController extends BaseController {
     @GetMapping("getBanner")
     public Result getAllUser(Pager pager) throws CustomException {
         return ResultGenerator.genSuccessResult();

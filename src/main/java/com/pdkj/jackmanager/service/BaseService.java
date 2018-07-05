@@ -1,6 +1,6 @@
 package com.pdkj.jackmanager.service;
 
-import com.pdkj.jackmanager.dao.SysUserDao;
+import com.pdkj.jackmanager.dao.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +10,24 @@ import org.springframework.data.redis.core.ValueOperations;
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
-public class BaseService<T> {
+public class BaseService<T extends BaseDao> {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseService.class);
 
     @Autowired
     RedisTemplate redisTemplate;
 
-    @Resource
+    @Autowired
     SysUserDao sysUserDao;
 
-    @Resource
-    T dao;
+    @Autowired
+    UserDao userDao;
+
+    @Autowired
+    ShopDao shopDao;
+
+    @Autowired
+    BannerDao bannerDao;
 
 
     public Object getCache(String key) {

@@ -16,7 +16,7 @@ import java.util.Map;
 public class BannerService extends BaseService<BannerDao> {
 
     public List<Map<String, Object>> getHomeBanner() {
-        List<Map<String, Object>> shop = dao.getHomeBanner();
+        List<Map<String, Object>> shop = bannerDao.getHomeBanner();
         return shop;
     }
 

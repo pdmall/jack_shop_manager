@@ -18,17 +18,17 @@ import java.util.Map;
 public class ShopService extends BaseService<ShopDao> {
 
     public List<Map<String, Object>> getShopList(Pager page) {
-        return dao.getShopList(page);
+        return shopDao.getShopList(page);
     }
     public Map<String, Object> getShop(Long id) {
-        return dao.getShop(id);
+        return shopDao.getShop(id);
     }
     public List<Map<String, Object>> getShopByCheck(Pager page) {
-        return dao.getShopByCheck(page);
+        return shopDao.getShopByCheck(page);
     }
 
     public int updateShop(int id , int shop_state){
-        return dao.updateShop(id,shop_state);
+        return shopDao.updateShop(id,shop_state);
     }
 
 }

@@ -22,8 +22,8 @@ public class ShopController extends BaseController{
     }
 
     @GetMapping("getShopByCheck")
-    public Result getShopByCheck(Pager pager) throws CustomException {
-        return ResultGenerator.genSuccessResult(shopService.getShopByCheck(pager));
+    public Result getShopByCheck(Integer state,Pager pager) throws CustomException {
+        return ResultGenerator.genSuccessResult(shopService.getShopByCheck(state,pager));
     }
 
     @GetMapping("updateShop")

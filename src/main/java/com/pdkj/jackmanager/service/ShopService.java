@@ -19,8 +19,8 @@ public class ShopService extends BaseService {
     public Map<String, Object> getShop(Long id) {
         return shopDao.getShop(id);
     }
-    public List<Map<String, Object>> getShopByCheck(Pager page) {
-        return shopDao.getShopByCheck(page);
+    public List<Map<String, Object>> getShopByCheck(Integer state,Pager pager) {
+        return shopDao.getShopByCheck( state, pager);
     }
 
     public int updateShop(Long id , int shop_state){

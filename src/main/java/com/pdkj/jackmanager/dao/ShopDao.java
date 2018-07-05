@@ -32,7 +32,7 @@ public class ShopDao extends BaseDao{
         return map;
     }
 
-    public List<Map<String, Object>> getShopByCheck(Integer state,Pager pager) {
+    public List<Map<String, Object>> getIsPassShop(Integer state,Pager pager) {
         MySql sql = new MySql();
         sql.append("select * from is_pass_shop where shop_state = ?",state);
         sql.limit(pager);

@@ -31,7 +31,8 @@ public class BaseService<T extends BaseDao> {
 
     @Autowired
     BannerDao bannerDao;
-
+    @Resource
+    CouponDao couponDao;
 
     public Object getCache(String key) {
         Object value = null;

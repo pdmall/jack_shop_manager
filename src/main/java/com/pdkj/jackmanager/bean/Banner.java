@@ -19,7 +19,7 @@ public class Banner {
     private String img_url;
     private String type;
     private String value;
-    private String is_availableA;
+    private String is_available;
 
     public Long getId() {
         return id;
@@ -53,11 +53,11 @@ public class Banner {
         this.value = value;
     }
 
-    public String getIs_availableA() {
-        return is_availableA;
+    public String getIs_available() {
+        return is_available;
     }
 
-    public void setIs_availableA(String is_availableA) {
-        this.is_availableA = is_availableA;
+    public void setIs_available(String is_available) {
+        this.is_available = is_available;
     }
 }

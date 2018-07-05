@@ -8,6 +8,7 @@ package com.pdkj.jackmanager.controller;
  * @version V1.0
  */
 
+import com.pdkj.jackmanager.bean.Banner;
 import com.pdkj.jackmanager.core.CustomException;
 import com.pdkj.jackmanager.core.Result;
 import com.pdkj.jackmanager.core.ResultGenerator;
@@ -26,17 +27,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("banner")
 public class BannerController extends BaseController {
-    @GetMapping("getBanner")
-    public Result getAllUser(Pager pager) throws CustomException {
-        return ResultGenerator.genSuccessResult();
+    @GetMapping("getHomeBanner")
+    public Result getHomeBanner(Pager pager) throws CustomException {
+        return ResultGenerator.genSuccessResult(bannerService.getHomeBanner(pager));
     }
 
     @GetMapping("updateBanner")
-    public Result updateUser(String token) throws CustomException {
-        return ResultGenerator.genSuccessResult();
+    public Result updateUser(Banner banner) throws CustomException {
+        return ResultGenerator.genSuccessResult(bannerService.updateBanner(banner));
     }
-    @GetMapping("AddBanner")
-    public Result AddBanner(String token) throws CustomException {
-        return ResultGenerator.genSuccessResult();
+    @GetMapping("addBanner")
+    public Result addBanner(Banner banner) throws CustomException {
+        return ResultGenerator.genSuccessResult(bannerService.addBanner(banner));
     }
 }

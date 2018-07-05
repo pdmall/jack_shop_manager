@@ -24,8 +24,8 @@ import java.util.Map;
 @Repository
 public class ShopDao extends BaseDao {
 
-    public List<Map<String, Object>> getShopList(Pager page) {
-       String sql = "select * from is_pass_shop limit "+(page.getPage()-1)*page.getRow()+","+page.getRow();
+    public List<Map<String, Object>> getShopList(Pager pager) {
+       String sql = "select * from is_pass_shop limit "+(pager.getPage()-1)*pager.getRow()+","+pager.getRow();
         return jdbcTemplate.queryForList(sql);
     }
     public Map<String, Object> getShop(Long id) {
@@ -33,8 +33,8 @@ public class ShopDao extends BaseDao {
         Map<String, Object> map = jdbcTemplate.queryForMap(sql, id);
         return map;
     }
-    public List<Map<String, Object>> getShopByCheck(Pager page) {
-        String sql = "select * from is_pass_shop where shop_state = -1 limit "+(page.getPage()-1)*page.getRow()+","+page.getRow();
+    public List<Map<String, Object>> getShopByCheck(Pager pager) {
+        String sql = "select * from is_pass_shop where shop_state = -1 limit "+(pager.getPage()-1)*pager.getRow()+","+pager.getRow();
         List<Map<String, Object>> map = jdbcTemplate.queryForList(sql);
         return map;
     }

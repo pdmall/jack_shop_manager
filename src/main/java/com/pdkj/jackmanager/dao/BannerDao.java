@@ -10,6 +10,7 @@ package com.pdkj.jackmanager.dao;
 
 import com.pdkj.jackmanager.bean.Banner;
 import com.pdkj.jackmanager.util.Tools;
+import com.pdkj.jackmanager.util.sql.Pager;
 import com.pdkj.jackmanager.util.sql.SQLTools;
 import com.pdkj.jackmanager.util.sql.SqlInfo;
 import org.springframework.stereotype.Repository;
@@ -26,13 +27,19 @@ import java.util.Map;
 @Repository
 public class BannerDao extends BaseDao{
 
-    public List<Map<String, Object>> getHomeBanner() {
-        String sql = "SELECT id,img_url,`type`,`value` from banner where is_available = 1";
+    public List<Map<String, Object>> getHomeBanner(Pager pager) {
+        String sql = "SELECT id,img_url,`type`,`value`,is_availabele from banner  limit "+(pager.getPage()-1)*pager.getRow()+","+pager.getRow();
         return jdbcTemplate.queryForList(sql);
     }
-    public int addBanner(Banner banner){
+    public Long addBanner(Banner banner){
         banner.setId(Tools.generatorId());
         SqlInfo insertSQL = SQLTools.getInsertSQL(banner);
-        return jdbcTemplate.update(insertSQL.getSql(), insertSQL.getValues());
+        jdbcTemplate.update(insertSQL.getSql(), insertSQL.getValues());
+        return banner.getId();
+    }
+    public Long updateBanner(Banner banner){
+        SqlInfo insertSQL = SQLTools.getUpdateById(banner,"banner",banner.getId());
+        jdbcTemplate.update(insertSQL.getSql(), insertSQL.getValues());
+        return banner.getId();
     }
 }

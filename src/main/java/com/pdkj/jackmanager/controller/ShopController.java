@@ -7,6 +7,7 @@ import com.pdkj.jackmanager.core.ResultGenerator;
 import com.pdkj.jackmanager.core.CustomException;
 import com.pdkj.jackmanager.util.sql.Pager;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,7 +45,7 @@ public class ShopController extends BaseController{
         return ResultGenerator.genSuccessResult(shopService.getShop(id));
     }
 
-    @GetMapping("updateShopPass")
+    @PostMapping("updateShopPass")
     public Result updateShopPass(Shop shop,Integer state,String log) throws CustomException {
         if(state ==1){
             shopService.addShop(shop);

@@ -41,4 +41,5 @@ public class ShopController extends BaseController{
     public Result getShop(Long id) throws CustomException {
         return ResultGenerator.genSuccessResult(shopService.getShop(id));
     }
+
 }

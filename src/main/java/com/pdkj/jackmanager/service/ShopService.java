@@ -23,6 +23,7 @@ public class ShopService extends BaseService {
     public Map<String, Object> getShop(Long id) {
         return shopDao.getShop(id);
     }
+
     public List<Map<String, Object>> getShopByCheck(Integer state,Pager page) {
         return shopDao.getShopByCheck(state,page);
     }

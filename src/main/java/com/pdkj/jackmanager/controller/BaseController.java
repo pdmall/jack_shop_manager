@@ -1,10 +1,7 @@
 package com.pdkj.jackmanager.controller;
 
 import com.pdkj.jackmanager.bean.SysUser;
-import com.pdkj.jackmanager.service.BannerService;
-import com.pdkj.jackmanager.service.ShopService;
-import com.pdkj.jackmanager.service.SysUserService;
-import com.pdkj.jackmanager.service.UserService;
+import com.pdkj.jackmanager.service.*;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
@@ -24,6 +21,8 @@ public class BaseController {
 
     @Resource
     public BannerService bannerService;
+    @Resource
+    public CouponService couponService;
 
     public SysUser getUser(){
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();

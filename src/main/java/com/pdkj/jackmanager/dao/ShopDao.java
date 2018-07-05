@@ -20,10 +20,10 @@ import java.util.Map;
 public class ShopDao extends BaseDao{
 
     public List<Map<String,Object>> getShopList(Integer state, Pager page) {
-        MySql sql = new MySql("SELECT * from shop where shop_state = ?");
+        MySql sql = new MySql();
+        sql.append("SELECT * from shop where shop_state = ?",state);
         sql.limit(page);
-        List<Map<String, Object>> shop = jdbcTemplate.queryForList(sql.toString(), new Object[]{state});
-        return shop;
+        return jdbcTemplate.queryForList(sql.toString(), new Object[]{state});
     }
 
     public List<Map<String,Object>> getShopState(){
@@ -40,11 +40,12 @@ public class ShopDao extends BaseDao{
     public List<Map<String, Object>> getShopByCheck(Integer state,Pager pager) {
         MySql sql = new MySql();
         sql.append("select * from is_pass_shop where 1=1");
-        sql.notNullAppend("and shop_state = ?",state);
+        sql.notNullAppend("and shop_state = ?", state);
         sql.limit(pager);
-        List<Map<String, Object>> map = jdbcTemplate.queryForList(sql.toString(),sql.getValues());
+        List<Map<String, Object>> map = jdbcTemplate.queryForList(sql.toString(), sql.getValues());
         return map;
     }
+
 
     public int updateShop(Long id , int shop_state){
         String sql = "UPDATE `is_pass_shop`  SET `shop_state` = ?  WHERE `id` = ? ";

@@ -1,6 +1,5 @@
 package com.pdkj.jackmanager.bean;
 
-
 import com.pdkj.jackmanager.util.DateUtils;
 
 import java.text.ParseException;
@@ -8,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Shop {
-
     private Long id;
 
     private String shop_name;
@@ -23,8 +21,8 @@ public class Shop {
 
     /**
      * 2，打洋
-1，营业
-0，冻结
+     1，营业
+     0，冻结
      */
     private Integer shop_state;
 
@@ -81,6 +79,27 @@ public class Shop {
      * 店铺详情图片","号分割
      */
     private String detail_imgs;
+
+
+    private String county;
+
+    private String food_safety_permit_img;
+
+    public String getFood_safety_permit_img() {
+        return food_safety_permit_img;
+    }
+
+    public void setFood_safety_permit_img(String food_safety_permit_img) {
+        this.food_safety_permit_img = food_safety_permit_img;
+    }
+
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
 
     /**
      * @return id
@@ -149,10 +168,10 @@ public class Shop {
     }
 
     public void setBuss_open(String buss_open) throws ParseException {
-       if(DateUtils.isLegalDate(buss_open,"HH:mm")){
-           SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-           Date date = sdf.parse(buss_open+":00");
-       }
+        if(DateUtils.isLegalDate(buss_open,"HH:mm")){
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            this.buss_open = sdf.parse(buss_open+":00");
+        }
     }
 
     public Date getBuss_close() {
@@ -162,7 +181,7 @@ public class Shop {
     public void setBuss_close(String buss_close) throws ParseException {
         if(DateUtils.isLegalDate(buss_close,"HH:mm")){
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-            Date date = sdf.parse(buss_close+":00");
+            this.buss_close = sdf.parse(buss_close+":00");
         }
     }
 

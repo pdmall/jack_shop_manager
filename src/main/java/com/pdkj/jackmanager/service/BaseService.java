@@ -20,7 +20,8 @@ public class BaseService<T> {
     @Resource
     SysUserDao sysUserDao;
 
-
+    @Resource
+    T dao;
 
 
     public Object getCache(String key) {

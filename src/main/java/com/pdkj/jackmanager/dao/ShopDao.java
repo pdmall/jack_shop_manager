@@ -26,14 +26,23 @@ public class ShopDao extends BaseDao{
         return shop;
     }
 
+    public List<Map<String,Object>> getShopState(){
+        MySql sql = new MySql("SELECT * from shop_state");
+        List<Map<String, Object>> shop = jdbcTemplate.queryForList(sql.toString());
+        return shop;
+    }
+
     public Map<String, Object> getShop(Long id) {
         String sql = " SELECT * FROM is_pass_shop where id = ? ";
         Map<String, Object> map = jdbcTemplate.queryForMap(sql, id);
         return map;
     }
-    public List<Map<String, Object>> getShopByCheck(Pager pager) {
-        String sql = "select * from is_pass_shop where shop_state = -1 limit "+(pager.getPage()-1)*pager.getRow()+","+pager.getRow();
-        List<Map<String, Object>> map = jdbcTemplate.queryForList(sql);
+    public List<Map<String, Object>> getShopByCheck(Integer state,Pager pager) {
+        MySql sql = new MySql();
+        sql.append("select * from is_pass_shop where 1=1");
+        sql.notNullAppend("and shop_state = ?",state);
+        sql.limit(pager);
+        List<Map<String, Object>> map = jdbcTemplate.queryForList(sql.toString(),sql.getValues());
         return map;
     }
 
@@ -41,4 +50,5 @@ public class ShopDao extends BaseDao{
         String sql = "UPDATE `is_pass_shop`  SET `shop_state` = ?  WHERE `id` = ? ";
         return jdbcTemplate.update(sql,shop_state,id);
     }
+
 }

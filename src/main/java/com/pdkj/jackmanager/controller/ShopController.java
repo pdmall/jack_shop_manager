@@ -21,15 +21,22 @@ public class ShopController extends BaseController{
         return ResultGenerator.genSuccessResult(users);
     }
 
+    @GetMapping("getShopState")
+    public Result getShopState(){
+        List<Map<String, Object>> states = shopService.getShopState();
+        return ResultGenerator.genSuccessResult(states);
+    }
+
     @GetMapping("getShopByCheck")
-    public Result getShopByCheck(Pager pager) throws CustomException {
-        return ResultGenerator.genSuccessResult(shopService.getShopByCheck(pager));
+    public Result getShopByCheck(Integer state,Pager pager) throws CustomException {
+        return ResultGenerator.genSuccessResult(shopService.getShopByCheck(state,pager));
     }
 
     @GetMapping("updateShop")
     public Result updateShop(Long id , int shop_state) throws CustomException {
         return ResultGenerator.genSuccessResult(shopService.updateShop(id,shop_state));
     }
+
     @GetMapping("getShop")
     public Result getShop(Long id) throws CustomException {
         return ResultGenerator.genSuccessResult(shopService.getShop(id));

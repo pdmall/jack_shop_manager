@@ -1,5 +1,7 @@
 package com.pdkj.jackmanager.controller;
 
+import com.pdkj.jackmanager.bean.Shop;
+import com.pdkj.jackmanager.bean.ShopPassLog;
 import com.pdkj.jackmanager.core.Result;
 import com.pdkj.jackmanager.core.ResultGenerator;
 import com.pdkj.jackmanager.core.CustomException;
@@ -41,5 +43,26 @@ public class ShopController extends BaseController{
     public Result getShop(Long id) throws CustomException {
         return ResultGenerator.genSuccessResult(shopService.getShop(id));
     }
+
+    @GetMapping("updateShopPass")
+    public Result updateShopPass(Shop shop,Integer state,String log) throws CustomException {
+        if(state ==1){
+            shopService.addShop(shop);
+            shopService.delShop(shop.getId());
+            ShopPassLog shopPassLog = new ShopPassLog();
+            shopPassLog.setShop_id(shop.getId());
+            shopPassLog.setReason(log);
+            shopService.addShopPassLog(shopPassLog);
+        }else{
+            shopService.updateShop(shop.getId(),-2);
+            ShopPassLog shopPassLog = new ShopPassLog();
+            shopPassLog.setShop_id(shop.getId());
+            shopPassLog.setReason(log);
+            shopService.addShopPassLog(shopPassLog);
+        }
+        return ResultGenerator.genSuccessResult("审批完成");
+    }
+
+
 
 }

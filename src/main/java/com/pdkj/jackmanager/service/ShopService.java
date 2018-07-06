@@ -10,6 +10,7 @@ import com.pdkj.jackmanager.util.sql.Pager;
 import com.pdkj.jackmanager.util.sql.SQLTools;
 import com.pdkj.jackmanager.util.sql.SqlInfo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class ShopService extends BaseService {
     public void delShop(Long id){
         shopDao.delShop(id);
     }
-
+    @Transactional
     public void updateShopPass(Shop shop, Integer state, String log) {
         ShopPassLog shopPassLog = new ShopPassLog();
         shopPassLog.setShop_id(shop.getId());

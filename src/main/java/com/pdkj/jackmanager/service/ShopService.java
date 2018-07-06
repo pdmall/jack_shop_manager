@@ -41,14 +41,24 @@ public class ShopService extends BaseService {
         return shopDao.getShopState();
     }
 
-    public Long addShopPassLog(ShopPassLog shopPassLog){
-
-        return shopDao.addShopPassLog(shopPassLog);
-    }
     public Long addShop(Shop shop){
         return shopDao.addShop(shop);
     }
     public void delShop(Long id){
         shopDao.delShop(id);
+    }
+
+    public void updateShopPass(Shop shop, Integer state, String log) {
+        ShopPassLog shopPassLog = new ShopPassLog();
+        shopPassLog.setShop_id(shop.getId());
+        shopPassLog.setReason(log);
+        shopDao.addShopPassLog(shopPassLog);
+
+        if(state == 1){
+            shopDao.addShop(shop);
+            shopDao.delShop(shop.getId());
+        }else{
+            updateShop(shop.getId(),-2);
+        }
     }
 }

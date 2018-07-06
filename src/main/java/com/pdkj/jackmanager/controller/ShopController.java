@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("shop")
-public class ShopController extends BaseController{
+public class ShopController extends BaseController {
 
     @GetMapping("getShopList")
     public Result getSysUserList(Pager page, Integer state) {
@@ -25,19 +25,19 @@ public class ShopController extends BaseController{
     }
 
     @GetMapping("getShopState")
-    public Result getShopState(){
+    public Result getShopState() {
         List<Map<String, Object>> states = shopService.getShopState();
         return ResultGenerator.genSuccessResult(states);
     }
 
     @GetMapping("getShopByCheck")
-    public Result getShopByCheck(Integer state,Pager pager) throws CustomException {
-        return ResultGenerator.genSuccessResult(shopService.getShopByCheck(state,pager));
+    public Result getShopByCheck(Integer state, Pager pager) throws CustomException {
+        return ResultGenerator.genSuccessResult(shopService.getShopByCheck(state, pager));
     }
 
     @GetMapping("updateShop")
-    public Result updateShop(Long id , int shop_state) throws CustomException {
-        return ResultGenerator.genSuccessResult(shopService.updateShop(id,shop_state));
+    public Result updateShop(Long id, int shop_state) throws CustomException {
+        return ResultGenerator.genSuccessResult(shopService.updateShop(id, shop_state));
     }
 
     @GetMapping("getShop")
@@ -46,24 +46,10 @@ public class ShopController extends BaseController{
     }
 
     @PostMapping("updateShopPass")
-    public Result updateShopPass(Shop shop,Integer state,String log) throws CustomException {
-        if(state ==1){
-            shopService.addShop(shop);
-            shopService.delShop(shop.getId());
-            ShopPassLog shopPassLog = new ShopPassLog();
-            shopPassLog.setShop_id(shop.getId());
-            shopPassLog.setReason(log);
-            shopService.addShopPassLog(shopPassLog);
-        }else{
-            shopService.updateShop(shop.getId(),-2);
-            ShopPassLog shopPassLog = new ShopPassLog();
-            shopPassLog.setShop_id(shop.getId());
-            shopPassLog.setReason(log);
-            shopService.addShopPassLog(shopPassLog);
-        }
+    public Result updateShopPass(Shop shop, Integer state, String log) throws CustomException {
+        shopService.updateShopPass(shop, state, log);
         return ResultGenerator.genSuccessResult("审批完成");
     }
-
 
 
 }

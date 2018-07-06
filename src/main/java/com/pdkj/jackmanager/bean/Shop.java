@@ -80,7 +80,6 @@ public class Shop {
      */
     private String detail_imgs;
 
-
     private String county;
 
     private String food_safety_permit_img;
@@ -159,8 +158,11 @@ public class Shop {
         return shop_state;
     }
 
-    public void setShop_state(Integer shop_state) {
-        this.shop_state = shop_state;
+    public void setShop_state(String shop_state) {
+        if(shop_state != null && shop_state != ""){
+            this.shop_state = Integer.parseInt(shop_state);
+        }
+
     }
 
     public Date getBuss_open() {
@@ -221,8 +223,10 @@ public class Shop {
         return average_cons;
     }
 
-    public void setAverage_cons(Long average_cons) {
-        this.average_cons = average_cons;
+    public void setAverage_cons(String average_cons) {
+        if(average_cons != null && average_cons != ""){
+            this.average_cons = Long.parseLong(average_cons);
+        }
     }
 
     public String getIntroduce() {
@@ -245,24 +249,30 @@ public class Shop {
         return service_score;
     }
 
-    public void setService_score(Integer service_score) {
-        this.service_score = service_score;
+    public void setService_score(String service_score) {
+        if(service_score != null && service_score != ""){
+            this.service_score = Integer.parseInt(service_score);
+        }
     }
 
     public Integer getEnviro_score() {
         return enviro_score;
     }
 
-    public void setEnviro_score(Integer enviro_score) {
-        this.enviro_score = enviro_score;
+    public void setEnviro_score(String enviro_score) {
+        if(enviro_score != null && enviro_score != ""){
+            this.service_score = Integer.parseInt(enviro_score);
+        }
     }
 
     public Integer getTaste_score() {
         return taste_score;
     }
 
-    public void setTaste_score(Integer taste_score) {
-        this.taste_score = taste_score;
+    public void setTaste_score(String taste_score) {
+        if(taste_score != null && taste_score != ""){
+            this.taste_score = Integer.parseInt(taste_score);
+        }
     }
 
     public String getHome_img() {

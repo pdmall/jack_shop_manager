@@ -61,6 +61,8 @@ public class ShopDao extends BaseDao{
         jdbcTemplate.update(sqlInfo.getSql(),sqlInfo.getValues());
         return shopPassLog.getId();
     }
+
+
     public Long addShop(Shop shop){
         SqlInfo sqlInfo = SQLTools.getInsertSQL(shop,"shop");
         jdbcTemplate.update(sqlInfo.getSql(),sqlInfo.getValues());

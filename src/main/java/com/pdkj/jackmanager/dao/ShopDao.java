@@ -70,7 +70,7 @@ public class ShopDao extends BaseDao{
     public void delShop(Long id){
         MySql sql = new MySql();
         sql.append("DELETE FROM is_pass_shop where id = ?",id);
-        List<Map<String, Object>> map = jdbcTemplate.queryForList(sql.toString(), sql.getValues());
+        jdbcTemplate.update(sql.toString(), sql.getValues());
     }
 
 }

@@ -51,5 +51,4 @@ public class ShopController extends BaseController {
         return ResultGenerator.genSuccessResult("审批完成");
     }
 
-
 }

@@ -159,8 +159,10 @@ public class Shop {
     }
 
     public void setShop_state(String shop_state) {
-        if(shop_state != null && shop_state != ""){
+        try {
             this.shop_state = Integer.parseInt(shop_state);
+        }catch (Exception e){
+            this.shop_state = 0;
         }
 
     }
@@ -224,8 +226,10 @@ public class Shop {
     }
 
     public void setAverage_cons(String average_cons) {
-        if(average_cons != null && average_cons != ""){
+        try {
             this.average_cons = Long.parseLong(average_cons);
+        }catch (Exception e){
+            this.average_cons = 0l;
         }
     }
 
@@ -250,8 +254,10 @@ public class Shop {
     }
 
     public void setService_score(String service_score) {
-        if(service_score != null && service_score != ""){
+        try {
             this.service_score = Integer.parseInt(service_score);
+        }catch (Exception e){
+            this.service_score = 0;
         }
     }
 
@@ -260,8 +266,10 @@ public class Shop {
     }
 
     public void setEnviro_score(String enviro_score) {
-        if(enviro_score != null && enviro_score != ""){
-            this.service_score = Integer.parseInt(enviro_score);
+        try {
+            this.enviro_score = Integer.parseInt(enviro_score);
+        }catch (Exception e){
+            this.enviro_score = 0;
         }
     }
 
@@ -270,8 +278,10 @@ public class Shop {
     }
 
     public void setTaste_score(String taste_score) {
-        if(taste_score != null && taste_score != ""){
+        try {
             this.taste_score = Integer.parseInt(taste_score);
+        }catch (Exception e){
+            this.taste_score = 0;
         }
     }
 

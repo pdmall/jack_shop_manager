@@ -48,6 +48,7 @@ public class ShopService extends BaseService {
     public void delShop(Long id){
         shopDao.delShop(id);
     }
+
     @Transactional
     public void updateShopPass(Shop shop, Integer state, String log) {
         ShopPassLog shopPassLog = new ShopPassLog();

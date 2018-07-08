@@ -3,7 +3,7 @@ package com.pdkj.jackmanager.bean;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Coupon {
+public class IsPassCoupon {
 
     private Long id;
 

@@ -1,5 +1,6 @@
 package com.pdkj.jackmanager.dao;
 
+import com.pdkj.jackmanager.bean.Coupon;
 import com.pdkj.jackmanager.bean.IsPassCoupon;
 import com.pdkj.jackmanager.util.Tools;
 import com.pdkj.jackmanager.util.sql.MySql;
@@ -54,8 +55,7 @@ public class CouponDao extends BaseDao{
      * @date 2018-07-07
      * @throw YnCorpSysException
      */
-    public Long addCoupon(IsPassCoupon coupon){
-        coupon.setId(Tools.generatorId());
+    public Long addCoupon(Coupon coupon){
         SqlInfo insertSQL = SQLTools.getInsertSQL(coupon,"is_pass_coupon");
         jdbcTemplate.update(insertSQL.getSql(), insertSQL.getValues());
         return coupon.getId();

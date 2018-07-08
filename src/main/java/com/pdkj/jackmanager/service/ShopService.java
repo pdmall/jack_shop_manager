@@ -1,6 +1,7 @@
 package com.pdkj.jackmanager.service;
 
 
+import com.alibaba.fastjson.JSON;
 import com.pdkj.jackmanager.bean.Shop;
 import com.pdkj.jackmanager.bean.ShopPassLog;
 import com.pdkj.jackmanager.core.CustomException;
@@ -50,17 +51,18 @@ public class ShopService extends BaseService {
     }
 
     @Transactional
-    public void updateShopPass(Shop shop, Integer state, String log) {
+    public void updateShopPass(Long shop_id, Integer state, String log) {
         ShopPassLog shopPassLog = new ShopPassLog();
-        shopPassLog.setShop_id(shop.getId());
+        shopPassLog.setShop_id(shop_id);
         shopPassLog.setReason(log);
         shopDao.addShopPassLog(shopPassLog);
 
         if(state == 1){
+            Shop shop = JSON.parseObject(JSON.toJSONString(shopDao.getShop(shop_id)), Shop.class);
             shopDao.addShop(shop);
             shopDao.delShop(shop.getId());
         }else{
-            updateShop(shop.getId(),-2);
+            updateShop(shop_id,-2);
         }
     }
 

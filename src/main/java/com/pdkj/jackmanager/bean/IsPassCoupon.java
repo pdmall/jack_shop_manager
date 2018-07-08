@@ -63,6 +63,16 @@ public class IsPassCoupon {
     private int once_count;
     private String unavailable_date;
 
+    private String diners_number;
+
+    public String getDiners_number() {
+        return diners_number;
+    }
+
+    public void setDiners_number(String diners_number) {
+        this.diners_number = diners_number;
+    }
+
     public Long getId() {
         return id;
     }

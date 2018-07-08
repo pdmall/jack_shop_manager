@@ -63,4 +63,14 @@ public class ShopService extends BaseService {
             updateShop(shop.getId(),-2);
         }
     }
+
+    public List<Map<String, Object>> getUserAllShop(Long user_id,Pager pager){
+        List<Map<String, Object>> list = shopDao.getUserAllIsPassShop(user_id,pager);
+        list.addAll(shopDao.getUserAllShop(user_id,pager));
+        return list;
+
+    }
+    public Map<String, Object> getIsPassShop(Long id){
+        return shopDao.getIsPassShop(id);
+    }
 }

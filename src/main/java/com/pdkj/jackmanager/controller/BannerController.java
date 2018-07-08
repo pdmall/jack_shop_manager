@@ -31,7 +31,6 @@ public class BannerController extends BaseController {
     public Result getHomeBanner(Pager pager) throws CustomException {
         return ResultGenerator.genSuccessResult(bannerService.getHomeBanner(pager));
     }
-
     @GetMapping("updateBanner")
     public Result updateUser(Banner banner) throws CustomException {
         return ResultGenerator.genSuccessResult(bannerService.updateBanner(banner));

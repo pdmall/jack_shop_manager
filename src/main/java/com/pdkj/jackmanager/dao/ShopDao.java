@@ -50,6 +50,11 @@ public class ShopDao extends BaseDao{
         Map<String, Object> map = jdbcTemplate.queryForMap(sql.toString(), sql.getValues());
         return map;
     }
+    public Map<String, Object> getShopById(Long id){
+        MySql sql = new MySql();
+        sql.append("select * from is_pass_shop where id = ?",id);
+        return jdbcTemplate.queryForMap(sql.toString(),sql.getValues());
+    }
 
     public List<Map<String, Object>> getShopByCheck(Integer state,Pager pager) {
         MySql sql = new MySql();

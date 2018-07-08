@@ -51,19 +51,25 @@ public class ShopService extends BaseService {
     }
 
     @Transactional
-    public void updateShopPass(Long shop_id, Integer state, String log) {
+    public String updateShopPass(Long shop_id, Integer state, String log) {
         ShopPassLog shopPassLog = new ShopPassLog();
         shopPassLog.setShop_id(shop_id);
         shopPassLog.setReason(log);
         shopDao.addShopPassLog(shopPassLog);
-
         if(state == 1){
-            Shop shop = JSON.parseObject(JSON.toJSONString(shopDao.getShop(shop_id)), Shop.class);
+            Shop shop = null;
+            if(shopDao.getShopById(shop_id).size()>0){
+                shop = JSON.parseObject(JSON.toJSONString(shopDao.getShopById(shop_id)), Shop.class);
+                shop.setShop_state("1");
+            }else{
+                return "没有该商铺";
+            }
             shopDao.addShop(shop);
             shopDao.delShop(shop.getId());
         }else{
             updateShop(shop_id,-2);
         }
+        return "审核完成";
     }
 
     public List<Map<String, Object>> getUserAllShop(Long user_id,Pager pager){

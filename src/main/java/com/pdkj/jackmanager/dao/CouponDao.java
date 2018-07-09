@@ -47,18 +47,6 @@ public class CouponDao extends BaseDao{
         String sql = "UPDATE `is_pass_coupon`  SET `coupon_state` = ?  WHERE `id` = ? ";
         return jdbcTemplate.update(sql,shop_state,id);
     }
-    /**
-     * @Title:
-     * @Description: 添加卷
-     * @author lvchong
-     * @params * @param null
-     * @date 2018-07-07
-     * @throw YnCorpSysException
-     */
-    public Long addCoupon(Coupon coupon){
-        SqlInfo insertSQL = SQLTools.getInsertSQL(coupon,"is_pass_coupon");
-        jdbcTemplate.update(insertSQL.getSql(), insertSQL.getValues());
-        return coupon.getId();
-    }
+
 
 }

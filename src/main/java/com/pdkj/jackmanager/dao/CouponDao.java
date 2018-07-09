@@ -37,6 +37,7 @@ public class CouponDao extends BaseDao{
         sql.limit(page);
         return jdbcTemplate.queryForList(sql.toString(),sql.getValues());
     }
+
     public Map<String, Object> getCoupon(Long id) {
         String sql = " SELECT * FROM is_pass_coupon where id = ? ";
         Map<String, Object> map = jdbcTemplate.queryForMap(sql, id);
@@ -47,6 +48,12 @@ public class CouponDao extends BaseDao{
         String sql = "UPDATE `is_pass_coupon`  SET `coupon_state` = ?  WHERE `id` = ? ";
         return jdbcTemplate.update(sql,shop_state,id);
     }
+
+    public int updateCouponStock(Long id){
+        String sql = "update 'coupon' set stock_count -= 1 where id = ?";
+        return jdbcTemplate.update(sql,id);
+    }
+
 
 
 }

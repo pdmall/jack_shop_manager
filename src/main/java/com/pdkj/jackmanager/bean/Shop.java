@@ -308,4 +308,5 @@ public class Shop {
     public void setStreet(String street) {
         this.street = street;
     }
+
 }

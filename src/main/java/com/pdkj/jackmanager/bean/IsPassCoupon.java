@@ -3,7 +3,7 @@ package com.pdkj.jackmanager.bean;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Coupon {
+public class IsPassCoupon {
 
     private Long id;
 
@@ -62,6 +62,7 @@ public class Coupon {
     private int stock_count;
     private int once_count;
     private String unavailable_date;
+
     private String diners_number;
 
     public String getDiners_number() {

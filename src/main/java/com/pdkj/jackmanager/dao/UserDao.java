@@ -3,6 +3,7 @@ package com.pdkj.jackmanager.dao;
 import com.pdkj.jackmanager.util.sql.MySql;
 import com.pdkj.jackmanager.util.sql.Pager;
 import com.pdkj.jackmanager.util.sql.SQLTools;
+import com.pdkj.jackmanager.util.sql.SqlInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,9 +30,9 @@ public class UserDao extends BaseDao {
         return jdbcTemplate.queryForMap(sql,id);
     }
 
-    public void update(User oldUser) {
-        String sql = "";
-        jdbcTemplate.update(sql);
+    public void update  (User oldUser) {
+        SqlInfo sql  = SQLTools.getUpdateById(oldUser,"user",oldUser.getId());
+        jdbcTemplate.update(sql.getSql(),sql.getValues());
     }
 
 }

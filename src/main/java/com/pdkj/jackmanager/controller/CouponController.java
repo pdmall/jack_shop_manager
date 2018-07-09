@@ -20,6 +20,11 @@ public class CouponController extends BaseController{
         return ResultGenerator.genSuccessResult(couponService.getCouponList(state, page));
     }
 
+    @GetMapping("getIsPassCouponList")
+    public Result getIsPassCouponList(Pager page, Integer state) {
+        return ResultGenerator.genSuccessResult(couponService.getIsPassCouponList(state, page));
+    }
+
     @GetMapping("updateCoupon")
     public Result updateCoupon(Long id , int shop_state) throws CustomException {
         return ResultGenerator.genSuccessResult(couponService.updateCoupon(id,shop_state));

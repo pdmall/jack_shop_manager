@@ -20,14 +20,12 @@ public class ShopController extends BaseController {
 
     @GetMapping("getShopList")
     public Result getSysUserList(Pager page, Integer state) {
-        List<Map<String, Object>> users = shopService.getShopList(state, page);
-        return ResultGenerator.genSuccessResult(users);
+        return ResultGenerator.genSuccessResult(shopService.getShopList(state, page));
     }
 
     @GetMapping("getShopState")
     public Result getShopState() {
-        List<Map<String, Object>> states = shopService.getShopState();
-        return ResultGenerator.genSuccessResult(states);
+        return ResultGenerator.genSuccessResult(shopService.getShopState());
     }
 
     @GetMapping("getShopByCheck")
@@ -46,9 +44,13 @@ public class ShopController extends BaseController {
     }
 
     @PostMapping("updateShopPass")
-    public Result updateShopPass(Shop shop, Integer isPass, String log) throws CustomException {
-        shopService.updateShopPass(shop, isPass, log);
-        return ResultGenerator.genSuccessResult("审批完成");
+    public Result updateShopPass(Long shop_id, Integer isPass, String log) throws CustomException {
+        return ResultGenerator.genSuccessResult(shopService.updateShopPass(shop_id, isPass, log));
+    }
+
+    @PostMapping("getUserAllShop")
+    public Result getUserAllShop(Long user_id , Pager pager) throws CustomException {
+        return ResultGenerator.genSuccessResult(shopService.getUserAllShop(user_id,pager));
     }
 
 }

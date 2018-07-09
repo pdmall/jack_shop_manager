@@ -25,26 +25,41 @@ public class ShopDao extends BaseDao{
 
     public List<Map<String,Object>> getShopList(Integer state, Pager page) {
         MySql sql = new MySql();
-        sql.append("SELECT * from shop where shop_state = ?",state);
+        sql.append("SELECT * from shop where shop_state = ? order by updated DESC",state);
         sql.limit(page);
         return jdbcTemplate.queryForList(sql.toString(), new Object[]{state});
     }
 
     public List<Map<String,Object>> getShopState(){
-        MySql sql = new MySql("SELECT * from shop_state");
+        MySql sql = new MySql("SELECT * from shop_state order by updated DESC");
         List<Map<String, Object>> shop = jdbcTemplate.queryForList(sql.toString());
         return shop;
     }
 
-    public Map<String, Object> getShop(Long id) {
-        String sql = " SELECT * FROM is_pass_shop where id = ? ";
+    public Map<String, Object> getIsPassShop(Long id) {
+        String sql = " SELECT * FROM is_pass_shop where id = ?  order by updated DESC";
         Map<String, Object> map = jdbcTemplate.queryForMap(sql, id);
         return map;
     }
+    public Map<String, Object> getShop(Long id) {
+        MySql sql = new MySql();
+        sql.append("SELECT");
+        sql.append(" shop.id,name,shop_name,shop_address,province,street,city,county,shop_phone,shop_state,buss_open,buss_close,");
+        sql.append(" longitude,latitude,average_cons,introduce,license_img,service_score,enviro_score,taste_score,");
+        sql.append(" home_img,detail_imgs FROM shop,label where shop.id = ? and label.shop_id = shop.id",id);
+        Map<String, Object> map = jdbcTemplate.queryForMap(sql.toString(), sql.getValues());
+        return map;
+    }
+    public Map<String, Object> getShopById(Long id){
+        MySql sql = new MySql();
+        sql.append("select * from is_pass_shop where id = ?",id);
+        return jdbcTemplate.queryForMap(sql.toString(),sql.getValues());
+    }
+
     public List<Map<String, Object>> getShopByCheck(Integer state,Pager pager) {
         MySql sql = new MySql();
         sql.append("select * from is_pass_shop where 1=1");
-        sql.notNullAppend("and shop_state = ?", state);
+        sql.notNullAppend("and shop_state = ? order by updated DESC", state);
         sql.limit(pager);
         List<Map<String, Object>> map = jdbcTemplate.queryForList(sql.toString(), sql.getValues());
         return map;
@@ -74,5 +89,21 @@ public class ShopDao extends BaseDao{
         sql.append("DELETE FROM is_pass_shop where id = ?",id);
         jdbcTemplate.update(sql.toString(), sql.getValues());
     }
+
+    public List<Map<String, Object>> getUserAllShop(Long user_id,Pager pager) {
+        MySql sql = new MySql();
+        sql.append("SELECT shop_name,id,shop_address,home_img FROM shop s,user_shop_rel usr  ");
+        sql.append(" WHERE s.id = usr.shop_id and user_id = ? order by updated DESC",user_id);
+        sql.limit(pager);
+        return jdbcTemplate.queryForList(sql.toString(), sql.getValues());
+    }
+    public List<Map<String, Object>> getUserAllIsPassShop(Long user_id,Pager pager) {
+        MySql sql = new MySql();
+        sql.append("SELECT shop_name,id,shop_address,home_img FROM getUserAllIsPassShop s,user_shop_rel usr  ");
+        sql.append(" WHERE s.id = usr.shop_id and user_id = ? order by updated DESC",user_id);
+        sql.limit(pager);
+        return jdbcTemplate.queryForList(sql.toString(), sql.getValues());
+    }
+
 
 }

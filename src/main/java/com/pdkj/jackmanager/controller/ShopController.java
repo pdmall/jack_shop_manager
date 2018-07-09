@@ -46,8 +46,8 @@ public class ShopController extends BaseController {
     }
 
     @PostMapping("updateShopPass")
-    public Result updateShopPass(Shop shop, Integer state, String log) throws CustomException {
-        shopService.updateShopPass(shop, state, log);
+    public Result updateShopPass(Shop shop, Integer isPass, String log) throws CustomException {
+        shopService.updateShopPass(shop, isPass, log);
         return ResultGenerator.genSuccessResult("审批完成");
     }
 

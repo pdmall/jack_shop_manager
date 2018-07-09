@@ -50,13 +50,13 @@ public class ShopService extends BaseService {
     }
 
     @Transactional
-    public void updateShopPass(Shop shop, Integer state, String log) {
+    public void updateShopPass(Shop shop, Integer isPass, String log) {
         ShopPassLog shopPassLog = new ShopPassLog();
         shopPassLog.setShop_id(shop.getId());
         shopPassLog.setReason(log);
         shopDao.addShopPassLog(shopPassLog);
 
-        if(state == 1){
+        if(isPass == 1){
             shopDao.addShop(shop);
             shopDao.delShop(shop.getId());
         }else{

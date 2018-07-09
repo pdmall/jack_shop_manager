@@ -1,17 +1,14 @@
 package com.pdkj.jackmanager.configurer;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.DeleteObjectsRequest;
 import com.aliyun.oss.model.DeleteObjectsResult;
 import com.pdkj.jackmanager.core.CustomException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This sample demonstrates how to delete objects under specfied bucket
@@ -35,12 +32,8 @@ public class AliYunOSS {
         try {
             List<String> keys = new ArrayList();
             keys.add(key);
-
             DeleteObjectsResult deleteObjectsResult = client.deleteObjects(new DeleteObjectsRequest(bucketName).withKeys(keys));
             List<String> deletedObjects =  deleteObjectsResult.getDeletedObjects();
-            for (String object : deletedObjects) {
-                System.out.println("\t" + object+" ==== 111111111111111");
-            }
         } catch (OSSException oe) {
             throw new CustomException("Error Code:       " + oe.getErrorCode()+"Error Message: " + oe.getErrorMessage());
         } catch (ClientException ce) {
@@ -61,9 +54,6 @@ public class AliYunOSS {
             DeleteObjectsResult deleteObjectsResult = client.deleteObjects(
                     new DeleteObjectsRequest(bucketName).withKeys(fileUrls));
             List<String> deletedObjects = deleteObjectsResult.getDeletedObjects();
-            for (String object : deletedObjects) {
-                System.out.println("\t" + object+" ==== 111111111111111");
-            }
         } catch (OSSException oe) {
             throw new CustomException("Error Code:       " + oe.getErrorCode()+"Error Message: " + oe.getErrorMessage());
         } catch (ClientException ce) {

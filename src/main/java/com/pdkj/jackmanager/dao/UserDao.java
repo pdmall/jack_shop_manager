@@ -1,5 +1,6 @@
 package com.pdkj.jackmanager.dao;
 
+import com.pdkj.jackmanager.configurer.AliYunOSS;
 import com.pdkj.jackmanager.util.sql.MySql;
 import com.pdkj.jackmanager.util.sql.Pager;
 import com.pdkj.jackmanager.util.sql.SQLTools;
@@ -35,4 +36,7 @@ public class UserDao extends BaseDao {
         jdbcTemplate.update(sql.getSql(),sql.getValues());
     }
 
+    public void delImg(String img_url){
+        AliYunOSS.deleteFile(img_url);
+    }
 }

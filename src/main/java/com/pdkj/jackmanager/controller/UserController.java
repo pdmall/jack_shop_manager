@@ -32,4 +32,10 @@ public class UserController extends BaseController {
         return ResultGenerator.genSuccessResult();
     }
 
+    @GetMapping("delImg")
+    public Result delImg(String img_url) throws CustomException {
+        userService.delImg(img_url);
+        return ResultGenerator.genSuccessResult();
+    }
+
 }

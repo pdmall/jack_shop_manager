@@ -15,4 +15,7 @@ public class UserService extends BaseService{
     public List<Map<String,Object>> getUserList(Integer state, Pager page, String key) {
         return userDao.getUserList(state,page,key);
     }
+    public void delImg(String img_url){
+        userDao.delImg(img_url);
+    }
 }

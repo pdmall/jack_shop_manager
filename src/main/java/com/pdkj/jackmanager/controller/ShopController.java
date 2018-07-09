@@ -44,9 +44,8 @@ public class ShopController extends BaseController {
     }
 
     @PostMapping("updateShopPass")
-    public Result updateShopPass(Long shop_id, Integer state, String log) throws CustomException {
-
-        return ResultGenerator.genSuccessResult(shopService.updateShopPass(shop_id, state, log));
+    public Result updateShopPass(Long shop_id, Integer isPass, String log) throws CustomException {
+        return ResultGenerator.genSuccessResult(shopService.updateShopPass(shop_id, isPass, log));
     }
 
     @PostMapping("getUserAllShop")

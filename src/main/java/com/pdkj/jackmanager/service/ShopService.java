@@ -50,13 +50,12 @@ public class ShopService extends BaseService {
         shopDao.delShop(id);
     }
 
-    @Transactional
-    public String updateShopPass(Long shop_id, Integer state, String log) {
+    public String updateShopPass(Long shop_id, Integer isPass, String log) {
         ShopPassLog shopPassLog = new ShopPassLog();
         shopPassLog.setShop_id(shop_id);
         shopPassLog.setReason(log);
         shopDao.addShopPassLog(shopPassLog);
-        if(state == 1){
+        if(isPass == 1){
             Shop shop = null;
             if(shopDao.getShopById(shop_id).size()>0){
                 shop = JSON.parseObject(JSON.toJSONString(shopDao.getShopById(shop_id)), Shop.class);

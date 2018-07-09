@@ -24,4 +24,5 @@ public class CouponService extends BaseService {
         return couponDao.updateCoupon(id,shop_state);
     }
 
+
 }

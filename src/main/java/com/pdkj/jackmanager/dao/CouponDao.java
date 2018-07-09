@@ -25,16 +25,14 @@ import java.util.Map;
 @Repository
 public class CouponDao extends BaseDao{
 
-    public List<Map<String,Object>> getCouponList(Integer state, Pager page,Long id) {
+    public List<Map<String,Object>> getCouponList(Integer state,Long id) {
         MySql sql = new MySql();
-        sql.append("SELECT * from coupon where coupon_state = ? and shop_id = ?",state,id);
-        sql.limit(page);
+        sql.append("SELECT * from coupon where coupon_state = ? and shop_id = ? order by created DESC",state,id);
         return jdbcTemplate.queryForList(sql.toString(),sql.getValues());
     }
-    public List<Map<String,Object>> getIsPassCouponList(Integer state, Pager page,Long id) {
+    public List<Map<String,Object>> getIsPassCouponList(Integer state,Long id) {
         MySql sql = new MySql();
-        sql.append("SELECT * from is_pass_coupon where shop_id = ? ",state,id);
-        sql.limit(page);
+        sql.append("SELECT * from is_pass_coupon where shop_id = ? order by created DESC",state,id);
         return jdbcTemplate.queryForList(sql.toString(),sql.getValues());
     }
 

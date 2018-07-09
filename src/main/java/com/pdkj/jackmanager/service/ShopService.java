@@ -50,6 +50,7 @@ public class ShopService extends BaseService {
         shopDao.delShop(id);
     }
 
+    //审核完成操作方法
     public String updateShopPass(Long shop_id, Integer isPass, String log) {
         ShopPassLog shopPassLog = new ShopPassLog();
         shopPassLog.setShop_id(shop_id);

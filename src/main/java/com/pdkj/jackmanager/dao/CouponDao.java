@@ -1,6 +1,7 @@
 package com.pdkj.jackmanager.dao;
 
 import com.pdkj.jackmanager.bean.Coupon;
+import com.pdkj.jackmanager.bean.CouponPassLog;
 import com.pdkj.jackmanager.bean.IsPassCoupon;
 import com.pdkj.jackmanager.util.Tools;
 import com.pdkj.jackmanager.util.sql.MySql;
@@ -24,16 +25,15 @@ import java.util.Map;
 @Repository
 public class CouponDao extends BaseDao{
 
-    public List<Map<String,Object>> getCouponList(Integer state, Pager page) {
+    public List<Map<String,Object>> getCouponList(Integer state, Pager page,Long id) {
         MySql sql = new MySql();
-
-        sql.append("SELECT * from coupon where coupon_state = ?",state);
+        sql.append("SELECT * from coupon where coupon_state = ? and shop_id = ?",state,id);
         sql.limit(page);
         return jdbcTemplate.queryForList(sql.toString(),sql.getValues());
     }
-    public List<Map<String,Object>> getIsPassCouponList(Integer state, Pager page) {
+    public List<Map<String,Object>> getIsPassCouponList(Integer state, Pager page,Long id) {
         MySql sql = new MySql();
-        sql.append("SELECT * from is_pass_coupon where coupon_state = ?",state);
+        sql.append("SELECT * from is_pass_coupon where shop_id = ? ",state,id);
         sql.limit(page);
         return jdbcTemplate.queryForList(sql.toString(),sql.getValues());
     }
@@ -55,5 +55,7 @@ public class CouponDao extends BaseDao{
     }
 
 
+    public void addCouponPassLog(CouponPassLog couponPassLog) {
 
+    }
 }

@@ -16,13 +16,8 @@ import java.util.Map;
 public class CouponController extends BaseController{
 
     @GetMapping("getCouponList")
-    public Result getCouponList(Pager page, Integer state) {
-        return ResultGenerator.genSuccessResult(couponService.getCouponList(state, page));
-    }
-
-    @GetMapping("getIsPassCouponList")
-    public Result getIsPassCouponList(Pager page, Integer state) {
-        return ResultGenerator.genSuccessResult(couponService.getIsPassCouponList(state, page));
+    public Result getCouponList(Long id, Pager page, Integer state) {
+        return ResultGenerator.genSuccessResult(couponService.getCouponList(state, page,id));
     }
 
     @GetMapping("updateCoupon")

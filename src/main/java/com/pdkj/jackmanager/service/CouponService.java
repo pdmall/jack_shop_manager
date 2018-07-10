@@ -16,9 +16,9 @@ public class CouponService extends BaseService {
 
     public List<Map<String,Object>> getCouponList(Integer state, Pager page,Long id) {
         if(state>0)
-            return couponDao.getCouponList(state,page, id);
+            return couponDao.getCouponList(state, id);
         else
-            return couponDao.getIsPassCouponList(state,page,id);
+            return couponDao.getIsPassCouponList(state,id);
 
     }
     public Map<String, Object> getCoupon(Long id) {
